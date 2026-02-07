@@ -8,8 +8,8 @@ from datetime import datetime, timezone
 # ===============================
 # TELEGRAM (FROM GITHUB SECRETS)
 # ===============================
-TOKEN = os.environ["BOT_TOKEN"]
-CHAT_ID = os.environ["CHAT_ID"]
+TOKEN = os.environ["8364584748:AAFeym3et4zJwmdKRxYtP3ieIKV8FuPWdQ8"]
+CHAT_ID = os.environ["@Tradecocom"]
 
 # ===============================
 # SETTINGS
