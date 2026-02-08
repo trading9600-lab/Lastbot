@@ -2,15 +2,15 @@ name: Crypto Signal Bot (MEXC)
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
-  workflow_dispatch:
+    - cron: "*/5 * * * *"   # ✅ ONLY ONE schedule (every 5 minutes)
+  workflow_dispatch:        # ✅ Manual run allowed
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -20,10 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install ccxt pandas requests
 
       - name: Run bot
-        run: |
-          python main.py
-          
+        run: python main.py
+        
