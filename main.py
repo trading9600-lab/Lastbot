@@ -21,9 +21,9 @@ EMA_SLOW = 50
 SWING_LOOKBACK = 15
 
 # ===============================
-# BINANCE
+# ✅ BYBIT (NO GEO BLOCK)
 # ===============================
-exchange = ccxt.binance({
+exchange = ccxt.bybit({
     "enableRateLimit": True,
     "options": {"defaultType": "spot"}
 })
