@@ -5,6 +5,10 @@ on:
     - cron: "*/5 * * * *"   # ✅ ONLY ONE schedule (every 5 minutes)
   workflow_dispatch:        # ✅ Manual run allowed
 
+concurrency:
+  group: crypto-signal-bot
+  cancel-in-progress: true
+  
 jobs:
   run-bot:
     runs-on: ubuntu-latest
