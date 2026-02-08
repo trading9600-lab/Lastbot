@@ -6,6 +6,11 @@ import os
 from datetime import datetime, timezone
 
 # ===============================
+# 🤖 BOT SOURCE (ADDED)
+# ===============================
+BOT_SOURCE = "GITHUB_ACTIONS"
+
+# ===============================
 # 🔐 TELEGRAM DETAILS (HARDCODED AS YOU ASKED)
 # ===============================
 TOKEN = "8364584748:AAFeym3et4zJwmdKRxYtP3ieIKV8FuPWdQ8"
@@ -90,12 +95,14 @@ def check_signal(symbol, timeframe):
             last_alert[key] = candle_time
 
             message = (
-                f"{signal}\n\n"
+                f"{signal}\n"
+                f"🤖 Source: {BOT_SOURCE}\n\n"
                 f"📊 Pair: {symbol}\n"
                 f"⏱ Timeframe: {timeframe}\n"
                 f"💰 Price: {price}\n"
                 f"🕒 UTC: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')}"
             )
+
             send_alert(message)
             return True
 
@@ -104,7 +111,10 @@ def check_signal(symbol, timeframe):
 # ===============================
 # START MESSAGE
 # ===============================
-send_alert("✅ Crypto Signal Bot started successfully (MEXC)")
+send_alert(
+    "✅ Crypto Signal Bot started successfully (MEXC)\n"
+    f"🤖 Source: {BOT_SOURCE}"
+)
 
 # ===============================
 # MAIN LOOP
@@ -118,6 +128,9 @@ while True:
         time.sleep(300)  # 5 minutes
 
     except Exception as e:
-        send_alert(f"⚠️ Bot error: {e}")
+        send_alert(
+            f"⚠️ Bot error: {e}\n"
+            f"🤖 Source: {BOT_SOURCE}"
+        )
         time.sleep(60)
         
