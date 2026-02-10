@@ -1,0 +1,28 @@
+name: EMA Hourly Market Scanner
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"   # runs every hour (GitHub uses UTC automatically)
+
+concurrency:
+  group: ema-hourly-bot
+  cancel-in-progress: true
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install ccxt pandas requests
+
+      - name: Run bot
+        run: python bot.py
+        
